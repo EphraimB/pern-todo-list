@@ -1,4 +1,5 @@
 import React, { Fragment, useState, useEffect } from "react";
+import Button from "react-bootstrap/Button";
 import Table from 'react-bootstrap/Table';
 
 const ListTodos = () => {
@@ -33,7 +34,9 @@ const ListTodos = () => {
                         <tr>
                             <td>{todo.description}</td>
                             <td>Edit</td>
-                            <td>Delete</td>
+                            <td>
+                                <Button variant="danger">Delete</Button>
+                            </td>
                         </tr>
                     ))}
                 </tbody>
