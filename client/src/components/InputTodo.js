@@ -1,7 +1,15 @@
-import React from "react";
+import React, { Fragment, useState } from "react";
 
 const InputTodo = () => {
-  return <h1>Input Todo</h1>;
+  return (
+    <Fragment>
+      <h1>Input Todo</h1>
+      <form>
+        <input type="text" placeholder="add todo" />
+        <button>Add</button>
+      </form>
+    </Fragment>
+  )
 };
 
 export default InputTodo;
