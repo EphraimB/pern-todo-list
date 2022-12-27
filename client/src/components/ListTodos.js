@@ -1,6 +1,7 @@
 import React, { Fragment, useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Table from 'react-bootstrap/Table';
+import EditTodo from "./EditTodo";
 
 const ListTodos = () => {
     const [todos, setTodos] = useState([]);
@@ -46,7 +47,7 @@ const ListTodos = () => {
                     {todos.map(todo => (
                         <tr>
                             <td>{todo.description}</td>
-                            <td>Edit</td>
+                            <td><EditTodo /></td>
                             <td>
                                 <Button variant="danger" onClick={() => deleteTodo(todo.todo_id)}>Delete</Button>
                             </td>
