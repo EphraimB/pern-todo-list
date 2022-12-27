@@ -4,6 +4,19 @@ import Table from 'react-bootstrap/Table';
 
 const ListTodos = () => {
     const [todos, setTodos] = useState([]);
+
+    async function deleteTodo(id) {
+        try {
+            const res = await fetch(`http://localhost:5000/todos/${id}`, {
+                method: "DELETE"
+            });
+
+            setTodos(todos.filter(todo => todo.todo_id !== id));
+        } catch (err) {
+            console.error(err.message);
+        }
+    }
+
     async function getTodos() {
         const res = await fetch("http://localhost:5000/todos");
 
@@ -23,7 +36,7 @@ const ListTodos = () => {
             {" "}
             <Table className="mt-5">
                 <thead>
-                    <tr>
+                    <tr key={todos.todo_id}>
                         <th>Description</th>
                         <th>Edit</th>
                         <th>Delete</th>
@@ -35,7 +48,7 @@ const ListTodos = () => {
                             <td>{todo.description}</td>
                             <td>Edit</td>
                             <td>
-                                <Button variant="danger">Delete</Button>
+                                <Button variant="danger" onClick={() => deleteTodo(todo.todo_id)}>Delete</Button>
                             </td>
                         </tr>
                     ))}
