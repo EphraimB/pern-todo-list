@@ -47,7 +47,7 @@ const ListTodos = () => {
                     {todos.map(todo => (
                         <tr>
                             <td>{todo.description}</td>
-                            <td><EditTodo /></td>
+                            <td><EditTodo todo={todo} /></td>
                             <td>
                                 <Button variant="danger" onClick={() => deleteTodo(todo.todo_id)}>Delete</Button>
                             </td>
