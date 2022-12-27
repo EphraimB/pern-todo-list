@@ -1,19 +1,22 @@
-import React, { Fragment , useState, useEffect } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import Table from 'react-bootstrap/Table';
 
 const ListTodos = () => {
+    const [todos, setTodos] = useState([]);
     async function getTodos() {
         const res = await fetch("http://localhost:5000/todos");
 
         const todoArray = await res.json();
 
-        console.log(todoArray);
+        setTodos(todoArray);
     }
 
     useEffect(() => {
         getTodos();
     }, []);
-    
+
+    console.log(todos);
+
     return (
         <Fragment>
             {" "}
@@ -26,7 +29,13 @@ const ListTodos = () => {
                     </tr>
                 </thead>
                 <tbody>
-
+                    {todos.map(todo => (
+                        <tr>
+                            <td>{todo.description}</td>
+                            <td>Edit</td>
+                            <td>Delete</td>
+                        </tr>
+                    ))}
                 </tbody>
             </Table>
         </Fragment>
