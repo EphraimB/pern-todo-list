@@ -1,6 +1,7 @@
 import React, { Fragment, useState } from "react";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import Form from 'react-bootstrap/Form';
 
 const EditTodo = () => {
     const [show, setShow] = useState(false);
@@ -10,21 +11,21 @@ const EditTodo = () => {
 
     return (
         <Fragment>
-            <Button variant="primary" onClick={handleShow}>
+            <Button variant="warning" onClick={handleShow}>
                 Edit
             </Button>
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Modal heading</Modal.Title>
+                    <Modal.Title>Edit Todo</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+                <Modal.Body><Form.Control type="text" /></Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
-                        Close
+                    <Button variant="warning" onClick={handleClose}>
+                        Edit
                     </Button>
-                    <Button variant="primary" onClick={handleClose}>
-                        Save Changes
+                    <Button variant="danger" onClick={handleClose}>
+                        Close
                     </Button>
                 </Modal.Footer>
             </Modal>
